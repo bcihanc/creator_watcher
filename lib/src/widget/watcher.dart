@@ -9,7 +9,7 @@ class CreatorWatcher<T> extends StatelessWidget {
   });
 
   final Creator<T> creator;
-  final Widget Function(BuildContext, T) builder;
+  final Widget Function(BuildContext context, T value) builder;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +30,13 @@ class EmitterWatcher<T> extends StatelessWidget {
   final Emitter<T> emitter;
   final Widget? indicator;
   final Widget? placeholder;
-  final Widget Function(BuildContext, T) builder;
-  final Widget Function(BuildContext, String)? errorBuilder;
+  final Widget Function(BuildContext context, T value) builder;
+  final Widget Function(BuildContext context, String error)? errorBuilder;
 
   @override
   Widget build(BuildContext context) {
     return Watcher((context, ref, _) {
-      const defaultPlaceholder = Center(child: Text('暂无内容'));
+      const defaultPlaceholder = Placeholder();
       const defaultIndicator = Center(
         child: CircularProgressIndicator.adaptive(),
       );
